@@ -1,0 +1,1942 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BloodConnect - Project Documentation</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <header>
+        <h1>BloodConnect</h1>
+        <p>Blood Donation Coordination System</p>
+
+        <p class="subtitle">
+            Project Documentation
+        </p>
+    </header>
+
+
+    <main>
+
+        <!-- =========================
+             1. PROJECT OVERVIEW
+        ========================== -->
+
+        <section>
+            <h2>1. Project Overview</h2>
+
+            <p>
+                BloodConnect is a full-stack blood donation coordination
+                web application developed using Next.js, React, MongoDB
+                and Mongoose.
+            </p>
+
+            <p>
+                The application connects donors with hospitals that need
+                blood. Hospitals can create blood requests, and eligible
+                donors can view and respond to matching requests.
+            </p>
+
+            <p>
+                The system also provides authentication, donor matching,
+                notifications, appointment scheduling, donation completion
+                tracking and history management.
+            </p>
+
+            <h3>Main Users</h3>
+
+            <ul>
+                <li><strong>Donor:</strong> Can register, maintain availability,
+                    view blood requests, respond to requests, receive
+                    notifications and view donation history.</li>
+
+                <li><strong>Hospital:</strong> Can register, create blood
+                    requests, view matching donors, schedule appointments,
+                    manage appointments and view history.</li>
+            </ul>
+
+            <h3>Technology Architecture</h3>
+
+            <p>
+                BloodConnect is implemented as a full-stack Next.js
+                application. The frontend uses React components and the
+                backend functionality is implemented using Next.js Route
+                Handlers.
+            </p>
+
+            <p>
+                The application communicates with MongoDB through Mongoose.
+                Authentication is handled using hashed passwords and
+                signed HTTP-only session cookies.
+            </p>
+        </section>
+
+
+        <!-- =========================
+             2. TECHNOLOGY STACK
+        ========================== -->
+
+        <section>
+            <h2>2. Technology Stack</h2>
+
+            <table>
+                <tr>
+                    <th>Technology</th>
+                    <th>Purpose</th>
+                </tr>
+
+                <tr>
+                    <td>Next.js</td>
+                    <td>
+                        Used to build the full-stack web application,
+                        routing and backend API Route Handlers.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>React</td>
+                    <td>
+                        Used to create interactive user interface
+                        components.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>JavaScript</td>
+                    <td>
+                        Used for application logic and frontend/backend
+                        functionality.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>MongoDB</td>
+                    <td>
+                        Used as the database for storing users, profiles,
+                        requests, appointments and notifications.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Mongoose</td>
+                    <td>
+                        Used to define database schemas and communicate
+                        with MongoDB.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>bcryptjs</td>
+                    <td>
+                        Used to hash passwords before storing them.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>HTML</td>
+                    <td>
+                        Used as the structure for this project
+                        documentation.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>CSS</td>
+                    <td>
+                        Used for styling the BloodConnect interface
+                        and this documentation.
+                    </td>
+                </tr>
+            </table>
+        </section>
+
+
+        <!-- =========================
+             3. LANDING PAGE
+        ========================== -->
+
+        <section>
+            <h2>3. Landing Page</h2>
+
+            <h3>3.1 Landing Page - Screen 1</h3>
+
+            <img src="screenshots/authentication/landing-page-1.png"
+                 alt="BloodConnect Landing Page 1">
+
+            <h4>Purpose</h4>
+
+            <p>
+                The landing page is the first screen displayed when a
+                user visits BloodConnect. It introduces the purpose of
+                the application and provides navigation to the main
+                authentication pages.
+            </p>
+
+            <h4>How It Works</h4>
+
+            <p>
+                The user can explore the information provided on the
+                landing page and navigate to the registration or login
+                page using the available buttons and navigation links.
+            </p>
+
+            <h4>Technical Flow</h4>
+
+            <p>
+                Browser → Next.js Page → React Components → CSS →
+                Landing Page UI
+            </p>
+
+            <h4>Concepts Used</h4>
+
+            <ul>
+                <li>Next.js App Router</li>
+                <li>React Components</li>
+                <li>Navigation</li>
+                <li>HTML Structure</li>
+                <li>CSS Styling</li>
+            </ul>
+
+
+            <h3>3.2 Landing Page - Screen 2</h3>
+
+            <img src="screenshots/authentication/landing-page-2.png"
+                 alt="BloodConnect Landing Page 2">
+
+            <h4>Purpose</h4>
+
+            <p>
+                This screen presents additional information about the
+                BloodConnect system and guides users toward using the
+                platform.
+            </p>
+
+            <h4>How It Works</h4>
+
+            <p>
+                The user can interact with the navigation elements and
+                move to the registration or login process.
+            </p>
+
+            <h4>Concepts Used</h4>
+
+            <ul>
+                <li>React Components</li>
+                <li>Next.js Routing</li>
+                <li>CSS</li>
+                <li>Responsive Design</li>
+            </ul>
+        </section>
+
+
+        <!-- =========================
+             4. REGISTRATION
+        ========================== -->
+
+        <section>
+            <h2>4. Create Account / Registration</h2>
+
+            <img src="screenshots/authentication/create-account.png"
+                 alt="BloodConnect Create Account">
+
+            <h3>Purpose</h3>
+
+            <p>
+                The registration page allows a new user to create a
+                BloodConnect account. The user can register according
+                to their role, such as donor or hospital.
+            </p>
+
+            <h3>How It Works</h3>
+
+            <p>
+                The user enters the required registration information.
+                React manages the form values using component state.
+                When the form is submitted, the frontend sends the
+                information to the Next.js registration API.
+            </p>
+
+            <p>
+                The backend validates the submitted information,
+                checks whether the account already exists, hashes the
+                password and stores the user information in MongoDB.
+            </p>
+
+            <h3>Technical Flow</h3>
+
+            <p>
+                Registration Form
+                → React State
+                → fetch()
+                → POST /api/auth/register
+                → Validation
+                → Password Hashing
+                → Mongoose
+                → MongoDB
+            </p>
+
+            <h3>Concepts Used</h3>
+
+            <ul>
+                <li>React useState</li>
+                <li>Controlled Forms</li>
+                <li>Event Handling</li>
+                <li>fetch()</li>
+                <li>POST API</li>
+                <li>Next.js Route Handler</li>
+                <li>Server-side Validation</li>
+                <li>bcryptjs</li>
+                <li>MongoDB</li>
+                <li>Mongoose</li>
+            </ul>
+
+            <h3>Important Note</h3>
+
+            <p>
+                OTP generation functionality exists in the registration
+                backend, but OTP verification has not been implemented
+                in the current version of the project.
+            </p>
+        </section>
+
+
+        <!-- =========================
+             5. LOGIN
+        ========================== -->
+
+        <section>
+            <h2>5. Sign In / Login</h2>
+
+            <img src="screenshots/authentication/sign-in.png"
+                 alt="BloodConnect Sign In">
+
+            <h3>Purpose</h3>
+
+            <p>
+                The login page allows an existing BloodConnect user to
+                access their account.
+            </p>
+
+            <h3>How It Works</h3>
+
+            <p>
+                The user enters their email address and password.
+                The frontend sends the credentials to the login API.
+            </p>
+
+            <p>
+                The backend finds the user in MongoDB and compares the
+                entered password with the stored hashed password using
+                bcryptjs.
+            </p>
+
+            <p>
+                After successful authentication, the server creates a
+                signed HTTP-only session cookie. The user can then
+                access the appropriate dashboard.
+            </p>
+
+            <h3>Technical Flow</h3>
+
+            <p>
+                Login Form
+                → fetch()
+                → POST /api/auth/login
+                → Find User
+                → bcrypt Password Verification
+                → Create Session
+                → HTTP-only Cookie
+                → Dashboard
+            </p>
+
+            <h3>Concepts Used</h3>
+
+            <ul>
+                <li>Authentication</li>
+                <li>bcryptjs</li>
+                <li>HTTP-only Cookies</li>
+                <li>Sessions</li>
+                <li>fetch()</li>
+                <li>Next.js Route Handlers</li>
+                <li>MongoDB</li>
+            </ul>
+        </section>
+
+
+        <!-- =========================
+             6. HOSPITAL MODULE
+        ========================== -->
+
+        <section>
+            <h2>6. Hospital Module</h2>
+
+            <p>
+                The hospital module allows hospitals to create and
+                manage blood requests and coordinate with donors.
+            </p>
+
+
+            <h3>6.1 Hospital Dashboard - Screen 1</h3>
+
+            <img src="screenshots/hospital/hospital-dashboard-1.png"
+                 alt="Hospital Dashboard 1">
+
+            <h4>Purpose</h4>
+
+            <p>
+                The hospital dashboard provides the hospital with an
+                overview of its blood donation activities and requests.
+            </p>
+
+            <h4>How It Works</h4>
+
+            <p>
+                After login, the hospital dashboard loads the required
+                information from the backend APIs and displays the
+                relevant information.
+            </p>
+
+            <h4>Technical Flow</h4>
+
+            <p>
+                Dashboard
+                → fetch()
+                → Next.js API
+                → Authentication
+                → MongoDB
+                → JSON Response
+                → Dashboard UI
+            </p>
+
+            <h4>Concepts Used</h4>
+
+            <ul>
+                <li>React Components</li>
+                <li>useEffect</li>
+                <li>fetch()</li>
+                <li>Authentication</li>
+                <li>MongoDB</li>
+                <li>Mongoose</li>
+            </ul>
+
+
+            <h3>6.2 Hospital Dashboard - Screen 2</h3>
+
+            <img src="screenshots/hospital/hospital-dashboard-2.png"
+                 alt="Hospital Dashboard 2">
+
+            <h4>Purpose</h4>
+
+            <p>
+                This screen displays additional hospital information,
+                requests or actions available to the hospital.
+            </p>
+
+            <h4>Concepts Used</h4>
+
+            <ul>
+                <li>React Components</li>
+                <li>Conditional Rendering</li>
+                <li>API Data Fetching</li>
+                <li>JavaScript Array Methods</li>
+                <li>CSS</li>
+            </ul>
+
+
+            <h3>6.3 Create New Blood Request</h3>
+
+            <img src="screenshots/hospital/new-blood-request.png"
+                 alt="Hospital New Blood Request">
+
+            <h4>Purpose</h4>
+
+            <p>
+                This page allows a hospital to create a new blood
+                requirement.
+            </p>
+
+            <h4>Information Entered</h4>
+
+            <ul>
+                <li>Patient information</li>
+                <li>Blood group</li>
+                <li>Number of units required</li>
+                <li>City</li>
+                <li>Urgency</li>
+                <li>Additional notes</li>
+            </ul>
+
+            <h4>How It Works</h4>
+
+            <p>
+                The hospital fills the form and submits the blood
+                request. The frontend sends the information to the
+                request API.
+            </p>
+
+            <p>
+                The backend verifies that the logged-in user is a
+                hospital, validates the information and stores the
+                request in MongoDB.
+            </p>
+
+            <h4>Technical Flow</h4>
+
+            <p>
+                Form
+                → React State
+                → fetch()
+                → POST /api/requests
+                → Authentication
+                → Authorization
+                → Validation
+                → Mongoose
+                → MongoDB
+            </p>
+
+            <h4>Concepts Used</h4>
+
+            <ul>
+                <li>useState</li>
+                <li>Controlled Form</li>
+                <li>POST API</li>
+                <li>Authentication</li>
+                <li>Authorization</li>
+                <li>Validation</li>
+                <li>Mongoose</li>
+                <li>MongoDB</li>
+            </ul>
+
+
+            <h3>6.4 New Blood Request Displayed</h3>
+
+            <img src="screenshots/hospital/blood-request-displayed.png"
+                 alt="Blood Request Displayed">
+
+            <h4>Purpose</h4>
+
+            <p>
+                After creation, the blood request is displayed in the
+                hospital interface so that the hospital can monitor
+                the request.
+            </p>
+
+            <h4>How It Works</h4>
+
+            <p>
+                The frontend retrieves blood requests from the backend
+                and displays them using React components.
+            </p>
+
+            <h4>Technical Flow</h4>
+
+            <p>
+                Hospital Dashboard
+                → GET /api/requests
+                → Authentication
+                → Mongoose
+                → MongoDB
+                → Blood Request Data
+                → React UI
+            </p>
+
+            <h4>Concepts Used</h4>
+
+            <ul>
+                <li>GET API</li>
+                <li>fetch()</li>
+                <li>useEffect</li>
+                <li>Array Mapping</li>
+                <li>React Components</li>
+                <li>MongoDB</li>
+            </ul>
+
+
+            <h3>6.5 Hospital History</h3>
+
+            <img src="screenshots/hospital/hospital-history.png"
+                 alt="Hospital History">
+
+            <h4>Purpose</h4>
+
+            <p>
+                The history page allows the hospital to view previous
+                blood requests and completed activities.
+            </p>
+
+            <h4>How It Works</h4>
+
+            <p>
+                Historical request and appointment information is
+                retrieved from the available APIs and displayed to
+                the hospital.
+            </p>
+
+            <h4>Concepts Used</h4>
+
+            <ul>
+                <li>GET API</li>
+                <li>Filtering</li>
+                <li>Mapping</li>
+                <li>React Components</li>
+                <li>MongoDB</li>
+            </ul>
+
+        </section>
+
+
+        <!-- =========================
+             7. DONOR MATCHING
+        ========================== -->
+
+        <section>
+            <h2>7. Donor Matching and Blood Request Flow</h2>
+
+            <h3>7.1 Donor Dashboard - Screen 1</h3>
+
+            <img src="screenshots/donor/donor-dashboard-1.png"
+                 alt="Donor Dashboard 1">
+
+            <h4>Purpose</h4>
+
+            <p>
+                The donor dashboard allows donors to view their
+                blood donation activities and available requests.
+            </p>
+
+            <h4>How It Works</h4>
+
+            <p>
+                When the donor opens the dashboard, the application
+                retrieves relevant blood requests and donor information
+                from the backend.
+            </p>
+
+            <h4>Concepts Used</h4>
+
+            <ul>
+                <li>React Components</li>
+                <li>useEffect</li>
+                <li>fetch()</li>
+                <li>API Calls</li>
+                <li>Conditional Rendering</li>
+            </ul>
+
+
+            <h3>7.2 Donor Dashboard - Screen 2</h3>
+
+            <img src="screenshots/donor/donor-dashboard-2.png"
+                 alt="Donor Dashboard 2">
+
+            <h4>Purpose</h4>
+
+            <p>
+                This screen displays additional donor information and
+                available actions.
+            </p>
+
+            <h4>Concepts Used</h4>
+
+            <ul>
+                <li>React State</li>
+                <li>API Data</li>
+                <li>Conditional Rendering</li>
+                <li>JavaScript</li>
+                <li>CSS</li>
+            </ul>
+
+
+            <h3>7.3 Blood Request Received by Donor</h3>
+
+            <img src="screenshots/donor/blood-request-received.png"
+                 alt="Blood Request Received by Donor">
+
+            <h4>Purpose</h4>
+
+            <p>
+                This screen shows a blood request that matches the
+                donor's information.
+            </p>
+
+            <h4>Matching Logic</h4>
+
+            <p>
+                The system searches for donors based on the required
+                blood group, normalized city and donor availability.
+            </p>
+
+            <p>
+                Only donors satisfying the required matching
+                conditions are considered for the request.
+            </p>
+
+            <h4>Technical Flow</h4>
+
+            <p>
+                Blood Request Created
+                → Backend Searches Donors
+                → Blood Group Match
+                → City Match
+                → Availability Check
+                → Matching Donors Identified
+            </p>
+
+            <h4>Concepts Used</h4>
+
+            <ul>
+                <li>Database Query</li>
+                <li>Filtering</li>
+                <li>Blood Group Matching</li>
+                <li>City Normalization</li>
+                <li>Availability Checking</li>
+                <li>Mongoose Queries</li>
+            </ul>
+
+
+            <h3>7.4 Blood Request Notification</h3>
+
+            <img src="screenshots/donor/blood-request-notification.png"
+                 alt="Blood Request Notification">
+
+            <h4>Purpose</h4>
+
+            <p>
+                The notification informs the donor that a blood request
+                matching their information is available.
+            </p>
+
+            <h4>How It Works</h4>
+
+            <p>
+                When a matching donor is found, the backend creates a
+                notification record in MongoDB. The donor dashboard
+                retrieves these notifications and displays them.
+            </p>
+
+            <h4>Technical Flow</h4>
+
+            <p>
+                Matching Donor
+                → Create Notification
+                → MongoDB
+                → GET /api/notifications
+                → Donor UI
+            </p>
+
+            <h4>Concepts Used</h4>
+
+            <ul>
+                <li>Notifications</li>
+                <li>MongoDB</li>
+                <li>Mongoose</li>
+                <li>GET API</li>
+                <li>React Rendering</li>
+            </ul>
+
+        </section>
+
+
+        <!-- =========================
+             8. DONOR ACCEPTS REQUEST
+        ========================== -->
+
+        <section>
+            <h2>8. Donor Accepts Blood Request</h2>
+
+            <h3>8.1 Donor Response</h3>
+
+            <p>
+                When the donor decides to help, the donor selects the
+                option to respond to the blood request.
+            </p>
+
+            <h4>Technical Flow</h4>
+
+            <p>
+                Donor Clicks "I Can Help"
+                → POST /api/requests/[id]/respond
+                → Authentication
+                → Donor Authorization
+                → Request Validation
+                → Add Donor to Responders
+                → Create Hospital Notification
+            </p>
+
+            <h4>Concepts Used</h4>
+
+            <ul>
+                <li>Dynamic API Route</li>
+                <li>POST Request</li>
+                <li>Authentication</li>
+                <li>Authorization</li>
+                <li>MongoDB Update</li>
+                <li>Embedded Subdocuments</li>
+                <li>Notifications</li>
+            </ul>
+
+
+            <h3>8.2 Hospital Receives Accepted Donor Notification</h3>
+
+            <img src="screenshots/hospital/accepted-request-notification.png"
+                 alt="Hospital Accepted Donor Notification">
+
+            <h4>Purpose</h4>
+
+            <p>
+                The hospital receives a notification when a donor
+                accepts its blood request.
+            </p>
+
+            <h4>How It Works</h4>
+
+            <p>
+                After the donor responds, the backend adds the donor
+                information to the request's responders list and
+                creates a notification for the hospital.
+            </p>
+
+            <h4>Technical Flow</h4>
+
+            <p>
+                Donor Response
+                → BloodRequest Updated
+                → Responder Added
+                → Hospital Notification Created
+                → Hospital Dashboard
+            </p>
+
+            <h4>Concepts Used</h4>
+
+            <ul>
+                <li>MongoDB Update</li>
+                <li>Embedded Array</li>
+                <li>Notification Creation</li>
+                <li>API Response</li>
+                <li>React UI Update</li>
+            </ul>
+
+        </section>
+
+
+        <!-- =========================
+             9. APPOINTMENT
+        ========================== -->
+
+        <section>
+            <h2>9. Appointment Scheduling</h2>
+
+            <h3>9.1 Hospital Schedule Page</h3>
+
+            <img src="screenshots/hospital/schedule-appointment.png"
+                 alt="Hospital Schedule Appointment">
+
+            <h4>Purpose</h4>
+
+            <p>
+                After a donor accepts a blood request, the hospital
+                can schedule an appointment with the donor.
+            </p>
+
+            <h4>How It Works</h4>
+
+            <p>
+                The hospital selects the accepted donor and enters
+                the required appointment information such as date,
+                time and related details.
+            </p>
+
+            <h4>Technical Flow</h4>
+
+            <p>
+                Hospital
+                → Select Accepted Donor
+                → Enter Appointment Details
+                → POST /api/appointments
+                → Validation
+                → MongoDB
+            </p>
+
+            <h4>Concepts Used</h4>
+
+            <ul>
+                <li>Controlled Form</li>
+                <li>useState</li>
+                <li>fetch()</li>
+                <li>POST API</li>
+                <li>Authentication</li>
+                <li>Authorization</li>
+                <li>Mongoose</li>
+            </ul>
+
+
+            <h3>9.2 Appointment Data Entry</h3>
+
+            <img src="screenshots/hospital/appointment-scheduling.png"
+                 alt="Appointment Scheduling">
+
+            <h4>Purpose</h4>
+
+            <p>
+                This screen shows the hospital entering the appointment
+                details for the selected donor.
+            </p>
+
+            <h4>How It Works</h4>
+
+            <p>
+                The appointment form collects the required scheduling
+                information. After submission, the information is sent
+                to the appointment API.
+            </p>
+
+            <h4>Concepts Used</h4>
+
+            <ul>
+                <li>Form Handling</li>
+                <li>React State</li>
+                <li>Event Handling</li>
+                <li>API Communication</li>
+                <li>Validation</li>
+            </ul>
+
+
+            <h3>9.3 Hospital Dashboard After Scheduling</h3>
+
+            <img src="screenshots/hospital/hospital-dashboard-after-scheduling.png"
+                 alt="Hospital Dashboard After Scheduling">
+
+            <h4>Purpose</h4>
+
+            <p>
+                After successful scheduling, the hospital dashboard
+                displays the updated appointment information.
+            </p>
+
+            <h4>How It Works</h4>
+
+            <p>
+                The appointment is stored in MongoDB. The dashboard
+                retrieves the updated appointment information and
+                displays it to the hospital.
+            </p>
+
+            <h4>Technical Flow</h4>
+
+            <p>
+                Appointment Created
+                → MongoDB
+                → GET /api/appointments
+                → Hospital Dashboard
+            </p>
+
+            <h4>Concepts Used</h4>
+
+            <ul>
+                <li>GET API</li>
+                <li>POST API</li>
+                <li>MongoDB</li>
+                <li>Mongoose</li>
+                <li>React State</li>
+                <li>Data Refresh</li>
+            </ul>
+
+        </section>
+
+
+        <!-- =========================
+             10. DONOR APPOINTMENT
+        ========================== -->
+
+        <section>
+            <h2>10. Donor Appointment and Notification</h2>
+
+            <h3>10.1 Donor Dashboard After Scheduling</h3>
+
+            <img src="screenshots/donor/donor-dashboard-after-scheduling.png"
+                 alt="Donor Dashboard After Scheduling">
+
+            <h4>Purpose</h4>
+
+            <p>
+                After the hospital schedules the donation appointment,
+                the donor can see the updated appointment information
+                on the donor dashboard.
+            </p>
+
+            <h4>How It Works</h4>
+
+            <p>
+                The appointment is stored in MongoDB and is associated
+                with the donor. The donor dashboard retrieves the
+                appointment information through the backend API.
+            </p>
+
+            <h4>Technical Flow</h4>
+
+            <p>
+                Hospital Schedules Appointment
+                → MongoDB
+                → Appointment API
+                → Donor Dashboard
+            </p>
+
+            <h4>Concepts Used</h4>
+
+            <ul>
+                <li>API Data Fetching</li>
+                <li>React Components</li>
+                <li>MongoDB</li>
+                <li>Mongoose</li>
+                <li>Authentication</li>
+            </ul>
+
+
+            <h3>10.2 Donor Appointment Notification</h3>
+
+            <img src="screenshots/donor/donor-dashboard-after-scheduling.png"
+                 alt="Donor Dashboard Appointment Notification">
+
+            <h4>Purpose</h4>
+
+            <p>
+                The donor is notified when the hospital schedules the
+                donation appointment.
+            </p>
+
+            <h4>How It Works</h4>
+
+            <p>
+                The backend creates a notification for the donor after
+                the appointment is successfully scheduled. The donor
+                dashboard displays the notification.
+            </p>
+
+            <h4>Concepts Used</h4>
+
+            <ul>
+                <li>Notification System</li>
+                <li>MongoDB</li>
+                <li>API Communication</li>
+                <li>React Rendering</li>
+            </ul>
+
+        </section>
+
+
+        <!-- =========================
+             11. DONATION COMPLETION
+        ========================== -->
+
+        <section>
+            <h2>11. Donation Completion</h2>
+
+            <h3>11.1 Donor Side After Completed Donation</h3>
+
+            <img src="screenshots/donor/donor-completed-donation.png"
+                 alt="Donor Completed Donation">
+
+            <h4>Purpose</h4>
+
+            <p>
+                This screen shows the donor after the donation
+                appointment has been completed.
+            </p>
+
+            <h4>How It Works</h4>
+
+            <p>
+                When the hospital marks the appointment as completed,
+                the appointment status becomes completed and the
+                associated blood request is marked as fulfilled.
+            </p>
+
+            <h4>Technical Flow</h4>
+
+            <p>
+                Hospital Marks Donation Complete
+                → PATCH /api/appointments/[id]
+                → Appointment = Completed
+                → BloodRequest = Fulfilled
+                → Donor Notification
+                → History
+            </p>
+
+            <h4>Concepts Used</h4>
+
+            <ul>
+                <li>PATCH API</li>
+                <li>Database Update</li>
+                <li>Status Management</li>
+                <li>MongoDB</li>
+                <li>Mongoose</li>
+                <li>Notifications</li>
+            </ul>
+
+            <h3>11.2 Donor History</h3>
+
+            <img src="screenshots/donor/donor-history.png"
+                 alt="Donor History">
+
+            <h4>Purpose</h4>
+
+            <p>
+                The donor history page provides information about
+                previous donation activities.
+            </p>
+
+            <h4>How It Works</h4>
+
+            <p>
+                Completed donation and appointment information is
+                retrieved from the database and displayed as historical
+                records.
+            </p>
+
+            <h4>Concepts Used</h4>
+
+            <ul>
+                <li>GET API</li>
+                <li>Data Filtering</li>
+                <li>Array Mapping</li>
+                <li>MongoDB</li>
+                <li>React Components</li>
+            </ul>
+
+        </section>
+
+
+        <!-- =========================
+             12. ADDITIONAL DONOR HISTORY
+        ========================== -->
+
+        <section>
+            <h2>12. Donor History and Records</h2>
+
+            <p>
+                BloodConnect maintains historical information so that
+                donors can review their previous blood donation
+                activities.
+            </p>
+
+            <h3>12.1 Donor History Screen</h3>
+
+            <img src="screenshots/donor/donor-history.png"
+                 alt="Donor History Records">
+
+            <h4>Purpose</h4>
+
+            <p>
+                This page provides a record of completed donation
+                activities and related appointment information.
+            </p>
+
+            <h4>Concepts Used</h4>
+
+            <ul>
+                <li>Database Queries</li>
+                <li>Filtering</li>
+                <li>Conditional Rendering</li>
+                <li>React Components</li>
+                <li>MongoDB</li>
+            </ul>
+
+        </section>
+
+
+        <!-- =========================
+             13. HOSPITAL HISTORY
+        ========================== -->
+
+        <section>
+            <h2>13. Hospital History</h2>
+
+            <img src="screenshots/hospital/hospital-history.png"
+                 alt="Hospital History Records">
+
+            <h3>Purpose</h3>
+
+            <p>
+                The hospital history section allows hospitals to review
+                previously created blood requests and completed
+                donation activities.
+            </p>
+
+            <h3>How It Works</h3>
+
+            <p>
+                The application retrieves relevant request and
+                appointment records and displays completed or previous
+                activities to the hospital.
+            </p>
+
+            <h3>Concepts Used</h3>
+
+            <ul>
+                <li>GET API</li>
+                <li>MongoDB Queries</li>
+                <li>Filtering</li>
+                <li>Array Mapping</li>
+                <li>React Components</li>
+            </ul>
+
+        </section>
+
+
+        <!-- =========================
+             14. COMPLETE SYSTEM WORKFLOW
+        ========================== -->
+
+        <section>
+            <h2>14. Complete Application Workflow</h2>
+
+            <div class="workflow">
+
+                <div>Hospital Registers</div>
+
+                <div>↓</div>
+
+                <div>Hospital Logs In</div>
+
+                <div>↓</div>
+
+                <div>Hospital Creates Blood Request</div>
+
+                <div>↓</div>
+
+                <div>Next.js API Validates Request</div>
+
+                <div>↓</div>
+
+                <div>Request Stored in MongoDB</div>
+
+                <div>↓</div>
+
+                <div>System Searches for Matching Donors</div>
+
+                <div>↓</div>
+
+                <div>
+                    Blood Group + City + Availability Match
+                </div>
+
+                <div>↓</div>
+
+                <div>Matching Donors Receive Notifications</div>
+
+                <div>↓</div>
+
+                <div>Donor Views Blood Request</div>
+
+                <div>↓</div>
+
+                <div>Donor Selects "I Can Help"</div>
+
+                <div>↓</div>
+
+                <div>Donor Added to Request Responders</div>
+
+                <div>↓</div>
+
+                <div>Hospital Receives Notification</div>
+
+                <div>↓</div>
+
+                <div>Hospital Selects Donor</div>
+
+                <div>↓</div>
+
+                <div>Hospital Schedules Appointment</div>
+
+                <div>↓</div>
+
+                <div>Donor Receives Appointment Notification</div>
+
+                <div>↓</div>
+
+                <div>Donation Takes Place</div>
+
+                <div>↓</div>
+
+                <div>Hospital Marks Appointment as Completed</div>
+
+                <div>↓</div>
+
+                <div>Blood Request Marked as Fulfilled</div>
+
+                <div>↓</div>
+
+                <div>Records Appear in History</div>
+
+            </div>
+        </section>
+
+
+        <!-- =========================
+             15. TECHNICAL REQUEST FLOW
+        ========================== -->
+
+        <section>
+            <h2>15. Technical Request-Response Flow</h2>
+
+            <p>
+                BloodConnect follows a request-response architecture
+                between the React user interface, Next.js Route Handlers
+                and MongoDB.
+            </p>
+
+            <div class="workflow">
+
+                <div>React UI</div>
+
+                <div>↓</div>
+
+                <div>fetch()</div>
+
+                <div>↓</div>
+
+                <div>Next.js Route Handler</div>
+
+                <div>↓</div>
+
+                <div>Authentication</div>
+
+                <div>↓</div>
+
+                <div>Authorization</div>
+
+                <div>↓</div>
+
+                <div>Validation</div>
+
+                <div>↓</div>
+
+                <div>Mongoose</div>
+
+                <div>↓</div>
+
+                <div>MongoDB</div>
+
+                <div>↓</div>
+
+                <div>JSON Response</div>
+
+                <div>↓</div>
+
+                <div>React UI Updates</div>
+
+            </div>
+
+            <h3>Explanation</h3>
+
+            <p>
+                The React frontend collects user input or requests
+                information from the server using fetch(). The request
+                reaches a Next.js Route Handler. The backend verifies
+                authentication and authorization, validates the data,
+                performs database operations using Mongoose and
+                communicates with MongoDB.
+            </p>
+
+            <p>
+                After the database operation is completed, the API
+                returns a JSON response. React receives the response
+                and updates the user interface.
+            </p>
+        </section>
+
+
+        <!-- =========================
+             16. DATABASE
+        ========================== -->
+
+        <section>
+            <h2>16. Database</h2>
+
+            <p>
+                MongoDB is used as the database for BloodConnect.
+                Mongoose is used to define schemas and interact with
+                MongoDB collections.
+            </p>
+
+
+            <h3>16.1 Users Collection</h3>
+
+            <img src="screenshots/database/users.png"
+                 alt="Users Collection">
+
+            <h4>Purpose</h4>
+
+            <p>
+                The Users collection stores common account information
+                such as user identity, email, role and password hash.
+            </p>
+
+            <h4>Concepts Used</h4>
+
+            <ul>
+                <li>MongoDB Collection</li>
+                <li>Mongoose Schema</li>
+                <li>ObjectId</li>
+                <li>Password Hashing</li>
+            </ul>
+
+
+            <h3>16.2 Donor Profile Collection</h3>
+
+            <img src="screenshots/database/donor-profile.png"
+                 alt="Donor Profile Collection">
+
+            <h4>Purpose</h4>
+
+            <p>
+                The Donor Profile collection stores donor-specific
+                information such as blood group, city and availability.
+            </p>
+
+            <h4>Concepts Used</h4>
+
+            <ul>
+                <li>Mongoose Schema</li>
+                <li>MongoDB ObjectId</li>
+                <li>User Reference</li>
+                <li>Blood Group</li>
+                <li>Availability</li>
+            </ul>
+
+
+            <h3>16.3 Hospital Profile Collection</h3>
+
+            <img src="screenshots/database/hospital-profile.png"
+                 alt="Hospital Profile Collection">
+
+            <h4>Purpose</h4>
+
+            <p>
+                The Hospital Profile collection stores hospital-specific
+                information associated with a registered hospital user.
+            </p>
+
+            <h4>Concepts Used</h4>
+
+            <ul>
+                <li>Mongoose Schema</li>
+                <li>MongoDB ObjectId</li>
+                <li>User Reference</li>
+                <li>Hospital Information</li>
+            </ul>
+
+
+            <h3>16.4 Blood Request Collection</h3>
+
+            <img src="screenshots/database/blood-request.png"
+                 alt="Blood Request Collection">
+
+            <h4>Purpose</h4>
+
+            <p>
+                The Blood Request collection stores blood requirements
+                created by hospitals.
+            </p>
+
+            <p>
+                It contains information such as blood group, units,
+                city, urgency, request status and donor responders.
+            </p>
+
+            <h4>Concepts Used</h4>
+
+            <ul>
+                <li>Mongoose Schema</li>
+                <li>ObjectId References</li>
+                <li>Embedded Subdocuments</li>
+                <li>Array Fields</li>
+                <li>Status Management</li>
+            </ul>
+
+
+            <h3>16.5 Appointments Collection</h3>
+
+            <img src="screenshots/database/appointments.png"
+                 alt="Appointments Collection">
+
+            <h4>Purpose</h4>
+
+            <p>
+                The Appointments collection stores scheduled donation
+                appointments between hospitals and donors.
+            </p>
+
+            <h4>Appointment Status</h4>
+
+            <ul>
+                <li>Scheduled</li>
+                <li>Rescheduled</li>
+                <li>Cancelled</li>
+                <li>Completed</li>
+            </ul>
+
+            <h4>Concepts Used</h4>
+
+            <ul>
+                <li>Mongoose Schema</li>
+                <li>References</li>
+                <li>Date and Time Data</li>
+                <li>Status Management</li>
+            </ul>
+
+
+            <h3>16.6 Notifications Collection</h3>
+
+            <img src="screenshots/database/notifications.png"
+                 alt="Notifications Collection">
+
+            <h4>Purpose</h4>
+
+            <p>
+                The Notifications collection stores notifications
+                generated by the system for donors and hospitals.
+            </p>
+
+            <h4>Examples</h4>
+
+            <ul>
+                <li>Matching blood request</li>
+                <li>Donor accepted request</li>
+                <li>Appointment scheduled</li>
+                <li>Donation completed</li>
+            </ul>
+
+            <h4>Concepts Used</h4>
+
+            <ul>
+                <li>MongoDB Collection</li>
+                <li>Mongoose</li>
+                <li>User References</li>
+                <li>Notification System</li>
+            </ul>
+
+        </section>
+
+
+        <!-- =========================
+             17. DATABASE RELATIONSHIP
+        ========================== -->
+
+        <section>
+            <h2>17. Database Relationship Overview</h2>
+
+            <p>
+                The main entities in the BloodConnect database are
+                connected through MongoDB ObjectId references and
+                embedded documents.
+            </p>
+
+            <div class="workflow">
+
+                <div>Users</div>
+
+                <div>↓</div>
+
+                <div>
+                    Donor Profile / Hospital Profile
+                </div>
+
+                <div>↓</div>
+
+                <div>Blood Requests</div>
+
+                <div>↓</div>
+
+                <div>Responders</div>
+
+                <div>↓</div>
+
+                <div>Appointments</div>
+
+                <div>↓</div>
+
+                <div>Notifications</div>
+
+            </div>
+
+            <h3>Important Database Concepts</h3>
+
+            <ul>
+                <li>MongoDB Collections</li>
+                <li>Mongoose Schemas</li>
+                <li>Mongoose Models</li>
+                <li>ObjectId</li>
+                <li>References</li>
+                <li>Embedded Documents</li>
+                <li>populate()</li>
+                <li>Database Queries</li>
+                <li>Database Updates</li>
+            </ul>
+
+        </section>
+
+
+        <!-- =========================
+             18. AUTHENTICATION
+        ========================== -->
+
+        <section>
+            <h2>18. Authentication and Authorization</h2>
+
+            <h3>Authentication</h3>
+
+            <p>
+                Authentication verifies the identity of a user.
+                BloodConnect uses email and password authentication.
+            </p>
+
+            <p>
+                Passwords are not stored directly. They are hashed
+                using bcryptjs before being stored in MongoDB.
+            </p>
+
+            <h3>Session Management</h3>
+
+            <p>
+                After successful login, BloodConnect creates a signed
+                session and stores it in an HTTP-only cookie.
+            </p>
+
+            <p>
+                Because the cookie is HTTP-only, client-side JavaScript
+                cannot directly access it.
+            </p>
+
+            <h3>Authorization</h3>
+
+            <p>
+                Authorization determines what an authenticated user
+                is allowed to do.
+            </p>
+
+            <p>
+                For example, a hospital can create a blood request,
+                while a donor can respond to a blood request.
+            </p>
+
+            <h3>Concepts Used</h3>
+
+            <ul>
+                <li>Authentication</li>
+                <li>Authorization</li>
+                <li>bcryptjs</li>
+                <li>Signed Cookies</li>
+                <li>Sessions</li>
+                <li>Role-based Access</li>
+            </ul>
+        </section>
+
+
+        <!-- =========================
+             19. API ENDPOINTS
+        ========================== -->
+
+        <section>
+            <h2>19. API Endpoints</h2>
+
+            <table>
+                <tr>
+                    <th>Method</th>
+                    <th>Endpoint</th>
+                    <th>Purpose</th>
+                </tr>
+
+                <tr>
+                    <td>POST</td>
+                    <td>/api/auth/register</td>
+                    <td>Register a new user</td>
+                </tr>
+
+                <tr>
+                    <td>POST</td>
+                    <td>/api/auth/login</td>
+                    <td>Authenticate user</td>
+                </tr>
+
+                <tr>
+                    <td>POST</td>
+                    <td>/api/auth/logout</td>
+                    <td>Logout user</td>
+                </tr>
+
+                <tr>
+                    <td>GET</td>
+                    <td>/api/auth/me</td>
+                    <td>Get current authenticated user</td>
+                </tr>
+
+                <tr>
+                    <td>GET</td>
+                    <td>/api/requests</td>
+                    <td>Retrieve blood requests</td>
+                </tr>
+
+                <tr>
+                    <td>POST</td>
+                    <td>/api/requests</td>
+                    <td>Create blood request</td>
+                </tr>
+
+                <tr>
+                    <td>POST</td>
+                    <td>/api/requests/[id]/respond</td>
+                    <td>Respond to a blood request</td>
+                </tr>
+
+                <tr>
+                    <td>GET</td>
+                    <td>/api/appointments</td>
+                    <td>Retrieve appointments</td>
+                </tr>
+
+                <tr>
+                    <td>POST</td>
+                    <td>/api/appointments</td>
+                    <td>Create appointment</td>
+                </tr>
+
+                <tr>
+                    <td>PATCH</td>
+                    <td>/api/appointments/[id]</td>
+                    <td>
+                        Reschedule, cancel or complete appointment
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>GET</td>
+                    <td>/api/notifications</td>
+                    <td>Retrieve notifications</td>
+                </tr>
+
+                <tr>
+                    <td>GET</td>
+                    <td>/api/profiles</td>
+                    <td>Retrieve profile information</td>
+                </tr>
+            </table>
+        </section>
+
+
+        <!-- =========================
+             20. CONCEPTS USED
+        ========================== -->
+
+        <section>
+            <h2>20. Programming and Development Concepts Used</h2>
+
+            <h3>Frontend Concepts</h3>
+
+            <ul>
+                <li>React Components</li>
+                <li>Client Components</li>
+                <li>useState</li>
+                <li>useEffect</li>
+                <li>Controlled Forms</li>
+                <li>Event Handling</li>
+                <li>Conditional Rendering</li>
+                <li>Array map()</li>
+                <li>Array filter()</li>
+                <li>Array find()</li>
+                <li>fetch()</li>
+                <li>Async/Await</li>
+                <li>Promises</li>
+                <li>try/catch</li>
+                <li>Destructuring</li>
+                <li>Spread Operator</li>
+                <li>Optional Chaining</li>
+                <li>Ternary Operator</li>
+            </ul>
+
+            <h3>Next.js Concepts</h3>
+
+            <ul>
+                <li>App Router</li>
+                <li>File-based Routing</li>
+                <li>Route Groups</li>
+                <li>Dynamic Routes</li>
+                <li>Route Handlers</li>
+                <li>API Routes using app/api</li>
+                <li>Client Components</li>
+                <li>Server-side functionality</li>
+            </ul>
+
+            <h3>Backend Concepts</h3>
+
+            <ul>
+                <li>REST-style APIs</li>
+                <li>HTTP Methods</li>
+                <li>Request and Response</li>
+                <li>JSON</li>
+                <li>Validation</li>
+                <li>Authentication</li>
+                <li>Authorization</li>
+                <li>Error Handling</li>
+            </ul>
+
+            <h3>Database Concepts</h3>
+
+            <ul>
+                <li>MongoDB</li>
+                <li>Collections</li>
+                <li>Documents</li>
+                <li>Mongoose</li>
+                <li>Schemas</li>
+                <li>Models</li>
+                <li>ObjectId</li>
+                <li>References</li>
+                <li>populate()</li>
+                <li>Queries</li>
+                <li>Updates</li>
+            </ul>
+
+            <h3>Security Concepts</h3>
+
+            <ul>
+                <li>Password Hashing</li>
+                <li>bcryptjs</li>
+                <li>Signed Sessions</li>
+                <li>Role-based Authorization</li>
+            </ul>
+        </section>
+
+
+        <!-- =========================
+             21. SECURITY
+        ========================== -->
+
+        <section>
+            <h2>21. Security Features</h2>
+
+            <p>
+                Several security practices are implemented in
+                BloodConnect to protect user accounts and API
+                operations.
+            </p>
+
+            <ul>
+                <li>
+                    Passwords are hashed using bcryptjs instead of
+                    storing plain-text passwords.
+                </li>
+
+                <li>
+                    Authentication sessions are stored using
+                    signed HTTP-only cookies.
+                </li>
+
+                <li>
+                    Protected APIs verify whether the user is
+                    authenticated.
+                </li>
+
+                <li>
+                    Role-based authorization prevents users from
+                    performing actions that belong to another role.
+                </li>
+
+                <li>
+                    Database connection information and secrets are
+                    stored using environment variables.
+                </li>
+            </ul>
+        </section>
+
+
+        <!-- =========================
+             22. LIMITATIONS
+        ========================== -->
+
+        <section>
+            <h2>22. Current Limitations</h2>
+
+            <p>
+                The current version of BloodConnect has some
+                functionality that can be improved in future versions.
+            </p>
+
+            <ul>
+                <li>
+                    OTP generation exists, but OTP verification is
+                    not implemented.
+                </li>
+
+                <li>
+                    A notification read/mark-as-read API is not
+                    currently implemented.
+                </li>
+
+                <li>
+                    Profile editing functionality can be expanded.
+                </li>
+
+                <li>
+                    Additional production-level security features such
+                    as rate limiting can be added.
+                </li>
+
+                <li>
+                    The history API can be further centralized instead
+                    of retrieving historical information through
+                    other APIs.
+                </li>
+            </ul>
+        </section>
+
+
+        <!-- =========================
+             23. CONCLUSION
+        ========================== -->
+
+        <section>
+            <h2>23. Conclusion</h2>
+
+            <p>
+                BloodConnect provides a digital platform for
+                coordinating blood donation requirements between
+                hospitals and donors.
+            </p>
+
+            <p>
+                The application allows hospitals to create blood
+                requests and identify matching donors based on blood
+                group, city and availability. Donors can receive
+                notifications, respond to requests and participate in
+                scheduled donation appointments.
+            </p>
+
+            <p>
+                The system manages the complete workflow from creating
+                a blood request to donor response, appointment
+                scheduling and donation completion.
+            </p>
+
+            <p>
+                The project demonstrates the use of Next.js, React,
+                MongoDB, Mongoose, REST-style API development,
+                authentication, authorization, database operations,
+                notifications and responsive web design in a
+                full-stack application.
+            </p>
+        </section>
+
+    </main>
+
+</body>
+
+</html>
